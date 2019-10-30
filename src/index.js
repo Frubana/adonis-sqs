@@ -19,7 +19,7 @@ class Queue {
     const json = Object.assign(data, { queue: name });
 
     try {
-      const result = Dispatch(this.SQS, this.config.url, {
+      const result = await Dispatch(this.SQS, this.config.url, {
         delay,
         group,
         id,
