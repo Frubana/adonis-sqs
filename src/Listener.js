@@ -67,14 +67,15 @@ class Listener {
 
         caller(json, message, ready => {
           if (!ready) {
-            setTimeout(() => {
-              this.listen();
-            }, this.config.visibility);
-            return;
+            throw new Error('ready is not ready')
           }
 
           this.delete(handle);
           this.listen();
+        }).catch(error => {
+          setTimeout(() => {
+            this.listen();
+          }, this.config.visibility);
         });
       });
     });
