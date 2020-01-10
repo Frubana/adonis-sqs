@@ -1,6 +1,6 @@
-const { ServiceProvider } = require('@adonisjs/fold');
+const { ServiceProvider } = require("@adonisjs/fold");
 
-const Queue = require('../src');
+const Queue = require("../src");
 
 class QueueProvider extends ServiceProvider {
   /**
@@ -11,15 +11,11 @@ class QueueProvider extends ServiceProvider {
    * @return {void}
    */
   register() {
-    const Config = this.app.use('Adonis/Src/Config');
-    const Helpers = this.app.use('Adonis/Src/Helpers');
-    const Logger = this.app.use('Adonis/Src/Logger');
+    const Config = this.app.use("Adonis/Src/Config");
+    const Helpers = this.app.use("Adonis/Src/Helpers");
+    const Logger = this.app.use("Adonis/Src/Logger");
 
-    if (Helpers.isAceCommand()) {
-      return;
-    }
-
-    this.app.singleton('SQS', () => {
+    this.app.singleton("SQS", () => {
       return new Queue(Config, Logger, Helpers);
     });
   }
@@ -33,13 +29,13 @@ class QueueProvider extends ServiceProvider {
    * @return {void}
    */
   boot() {
-    const Helpers = this.app.use('Adonis/Src/Helpers');
+    const Helpers = this.app.use("Adonis/Src/Helpers");
 
     if (Helpers.isAceCommand()) {
       return;
     }
 
-    const Provider = use('SQS');
+    const Provider = use("SQS");
     Provider.listen();
   }
 }
