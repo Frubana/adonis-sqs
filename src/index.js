@@ -3,8 +3,8 @@ const Dispatch = require('./Dispatch');
 const Listener = require('./Listener');
 
 class Queue {
-  constructor(Config, Logger, helpers) {
-    this.config = Config.get('queues');
+  constructor(Config, Logger, helpers, fileConfig = 'queues') {
+    this.config = Config.get(fileConfig);
     this.logger = Logger;
     this.helpers = helpers;
 
