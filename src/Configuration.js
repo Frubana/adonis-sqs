@@ -1,4 +1,4 @@
-const AWS = require('aws-sdk');
+const AWS = require("aws-sdk");
 
 const Configuration = (config, logger) => {
   const { key, secret, region } = config;
@@ -6,7 +6,7 @@ const Configuration = (config, logger) => {
   AWS.config.update({ region });
 
   if (key && secret) {
-    logger.info('AWS with custom credentials');
+    logger.info("AWS with custom credentials");
 
     return new AWS.SQS({
       accessKeyId: key,
@@ -14,7 +14,7 @@ const Configuration = (config, logger) => {
     });
   }
 
-  logger.info('AWS with default credentials');
+  logger.info("AWS with default credentials");
   return new AWS.SQS();
 };
 

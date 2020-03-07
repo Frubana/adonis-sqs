@@ -1,6 +1,6 @@
 {
   "name": "@frubana/adonis-sqs",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "SQS addon for AdonisJs",
   "main": "src/index.js",
   "git": "git@github.com:Frubana/adonis-sqs.git",

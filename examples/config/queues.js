@@ -1,5 +1,5 @@
 /** @type {import('@adonisjs/framework/src/Env')} */
-const Env = use('Env');
+const Env = use("Env");
 
 module.exports = {
   /*
@@ -10,7 +10,7 @@ module.exports = {
   | Number of queue items to process concurrently
   |
   */
-  accessKeyId: Env.get('AWS_ACCESS_KEY'),
+  accessKeyId: Env.get("AWS_ACCESS_KEY"),
 
   /*
   |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ module.exports = {
   | Number of queue items to process concurrently
   |
   */
-  secretAccessKey: Env.get('AWS_SECRET_KEY'),
+  secretAccessKey: Env.get("AWS_SECRET_KEY"),
 
   /*
   |--------------------------------------------------------------------------
@@ -30,17 +30,19 @@ module.exports = {
   | Where is availavle the queue
   |
   */
-  region: Env.getOrFail('AWS_REGION'),
+  region: Env.getOrFail("AWS_REGION"),
 
   /*
   |--------------------------------------------------------------------------
-  | Url
+  | Queue
   |--------------------------------------------------------------------------
   |
-  | Url of the queue
+  | List of the queues with name (key) and url (value)
   |
   */
-  url: Env.getOrFail('QUEUE_MESSAGES'),
+  queues: {
+    default: Env.getOrFail("QUEUE_MESSAGES")
+  },
 
   /*
   |--------------------------------------------------------------------------
@@ -62,4 +64,3 @@ module.exports = {
   */
   visibility: 30
 };
-
